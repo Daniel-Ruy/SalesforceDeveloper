@@ -8,8 +8,11 @@ public with sharing class AnimalLocator {
 
         HttpResponse res = http.send(req);
 
-        Map<String,Object> mapRes = (Map<String,Object>)JSON.deserializeUntyped(res.getBody());
-        Map<String,Object> animalMap = (Map<String,Object>)mapRes.get('animal');
-        return (String)animalMap.get('name');
+        if (res.getStatusCode() == 200) {
+            Map<String, Object> result = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
+            return (String) result.get('name');
+        } else {
+            return 'Error: ' + res.getStatusCode();
+        }
     }
 }
