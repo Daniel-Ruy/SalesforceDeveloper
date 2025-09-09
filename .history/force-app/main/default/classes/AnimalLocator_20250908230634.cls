@@ -13,11 +13,10 @@ public with sharing class AnimalLocator {
         HttpResponse response = htpp.send(request);
 
         if(response.getStatusCode() == 200){
-            Map<String,Object> responseMap = (Map<String,Object>)JSON.deserializeUntyped(response.getBody());
-            return (String)responseMap.get('name');
+            return response.getBody();
         }else{
             return 'Error: ' + response.getStatusCode();
-        }
+        })
         
         
         
