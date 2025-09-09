@@ -14,7 +14,8 @@ global with sharing class AccountManager {
             return null;
         }
 
-            List<Account> accList = [SELECT Id, Name, (SELECT Id, Name FROM Contacts)
+        try {
+            List<Account> accList = [SELECT Id, Name, (SELECT Id, LastName, Name FROM Contacts)
                                      FROM Account
                                      WHERE Id = :id
                                      LIMIT 1];
@@ -27,6 +28,6 @@ global with sharing class AccountManager {
 
             return accList[0];
 
-        
+        }
     }
 }
