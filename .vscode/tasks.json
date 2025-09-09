@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "className",
+      "type": "promptString",
+      "description": "Digite o nome da classe Apex que deseja deployar (ex: RandomContactFactory)"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "Deploy Classe Apex",
+      "type": "shell",
+      "command": "sf deploy metadata --source-dir force-app/main/default/classes/${input:className}.cls --target-org developerOrgEdition --wait 10",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
