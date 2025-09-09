@@ -23,6 +23,10 @@ global with sharing class AccountManager {
             RestContext.response.statusCode = 404;
             RestContext.response.responseBody = Blob.valueOf('Account not found');
             return null;
+        } catch(Exception e) {
+            RestContext.response.statusCode = 500;
+            RestContext.response.responseBody = Blob.valueOf('Unexpected error: ' + e.getMessage());
+            return null;
         }
     }
 }
