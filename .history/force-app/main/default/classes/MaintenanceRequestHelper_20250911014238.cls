@@ -1,6 +1,7 @@
 public with sharing class MaintenanceRequestHelper {
     
     public static void updateWorkOrders(List<Case> triggerCases) {
+        // Atualiza as ordens de manutenção com base nos Cases do trigger
         updateMaintenanceRequest(triggerCases);
     }
     
