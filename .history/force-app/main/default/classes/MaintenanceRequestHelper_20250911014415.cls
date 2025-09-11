@@ -34,8 +34,7 @@ public with sharing class MaintenanceRequestHelper {
                 lowerValue = equipAtual.Maintenance_Cycle__c;
             }
         }
-        Integer intLowerValue = lowerValue.intValue();
-        return System.today().addDays(intLowerValue);
+        return System.today().addDays(lowerValue);
     }
     
     public static void createEquipmentMaintenanceItem(List<Case> newCases, List<Case> originalCases){
